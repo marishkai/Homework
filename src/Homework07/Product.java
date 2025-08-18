@@ -1,3 +1,5 @@
+package Homework07;
+
 import java.util.Objects;
 
 public class Product {

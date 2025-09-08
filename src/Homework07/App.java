@@ -211,7 +211,6 @@ public class App {
                 if (parts.length != 2) {
                     throw new IllegalArgumentException("Неверный формат. Используйте: Имя - Продукт");
                 }
-
                 String personName = parts[0].trim();
                 String productName = parts[1].trim();
 

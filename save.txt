@@ -1,0 +1,5 @@
+player;Герой;19;5
+inventory;Potion:Зелье
+room;Пещера
+rooms;Сокровищница:false:Старый железный ключ:Дракон,30,5:Weapon=Золотой меч|Potion=Большое зелье;Пещера:false:null:Гоблин,12,2:;Площадь:false:null:null:;Лес:false:null:null:Potion=Малое зелье
+score;17

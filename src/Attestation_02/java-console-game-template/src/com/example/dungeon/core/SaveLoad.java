@@ -49,7 +49,7 @@ public class SaveLoad {
                         String monsterData = "null";
                         if (room.getMonster() != null) {
                             Monster m = room.getMonster();
-                            monsterData = m.getName() + "," + m.getStHP() + "," + m.getLevel();
+                            monsterData = m.getName() + "," + m.getHp() + "," + m.getLevel();
                         }
 
                         String itemsData = room.getItems().stream()
@@ -70,7 +70,7 @@ public class SaveLoad {
             w.write("score;" + s.getScore());
             w.newLine();
 
-            System.out.println("✅ Сохранено в " + SAVE.toAbsolutePath());
+            System.out.println("Сохранено в " + SAVE.toAbsolutePath());
             writeScore(p.getName(), s.getScore());
 
         } catch (IOException e) {
@@ -186,23 +186,23 @@ public class SaveLoad {
                 s.addScore(Integer.parseInt(map.get("score")));
             }
 
-            System.out.println("✅ Игра загружена полностью! Восстановлено состояние всех комнат.");
+            System.out.println("Игра загружена полностью! Восстановлено состояние всех комнат.");
 
         } catch (IOException e) {
             throw new UncheckedIOException("Не удалось загрузить игру", e);
         } catch (Exception e) {
-            System.out.println("⚠️ Ошибка при загрузке: " + e.getMessage());
+            System.out.println("Ошибка при загрузке: " + e.getMessage());
         }
     }
 
     public static void printScores() {
         if (!Files.exists(SCORES)) {
-            System.out.println("📊 Пока нет результатов.");
+            System.out.println("Пока нет результатов.");
             return;
         }
 
         try (BufferedReader r = Files.newBufferedReader(SCORES)) {
-            System.out.println("🏆 ТАБЛИЦА ЛИДЕРОВ (ТОП-10)");
+            System.out.println("ТАБЛИЦА ЛИДЕРОВ (ТОП-10)");
             System.out.println("┌───────┬──────────────────┬──────────────┬───────┐");
             System.out.println("│ Место │ Игрок            │ Дата         │ Очки  │");
             System.out.println("├───────┼──────────────────┼──────────────┼───────┤");
@@ -238,19 +238,10 @@ public class SaveLoad {
 
             System.out.println("└───────┴──────────────────┴──────────────┴───────┘");
 
-            // Статистика
-            if (!scores.isEmpty()) {
-                int totalPlayers = (int) scores.stream().map(ScoreRecord::player).distinct().count();
-                int maxScore = scores.stream().mapToInt(ScoreRecord::score).max().orElse(0);
-                int minScore = scores.stream().mapToInt(ScoreRecord::score).min().orElse(0);
-
-                System.out.println("📈 Статистика: " + totalPlayers + " игроков, рекорд: " + maxScore + " очков");
-            }
-
         } catch (IOException e) {
-            System.err.println("❌ Ошибка чтения результатов: " + e.getMessage());
+            System.err.println("Ошибка чтения результатов: " + e.getMessage());
         } catch (Exception e) {
-            System.err.println("❌ Ошибка обработки результатов: " + e.getMessage());
+            System.err.println("Ошибка обработки результатов: " + e.getMessage());
         }
     }
 
@@ -270,7 +261,7 @@ public class SaveLoad {
                 w.newLine();
             }
         } catch (IOException e) {
-            System.err.println("⚠️ Не удалось записать очки: " + e.getMessage());
+            System.err.println("Не удалось записать очки: " + e.getMessage());
         }
     }
 
